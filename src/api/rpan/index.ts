@@ -1,19 +1,18 @@
-import ky from 'ky/umd';
 import {useQuery} from 'react-query';
 import type {VideoResponse, VideosResponse} from './types';
 
 const BASE_URL = 'https://strapi.reddit.com';
 
 export function useVideo(id: string) {
-  return useQuery(`video-${id}`, async () =>
-    ky.get(`${BASE_URL}/videos/${id}`).json<VideoResponse>(),
+  return useQuery<VideoResponse>(`video-${id}`, async () =>
+    fetch(`${BASE_URL}/videos/${id}`).then((res) => res.json()),
   );
 }
 
 export function useVideos(subreddit: string | undefined = '') {
-  return useQuery(`videos-${subreddit}`, async () =>
-    ky
-      .get(`${BASE_URL}${subreddit ? `/r/${subreddit}` : ''}/broadcasts`)
-      .json<VideosResponse>(),
+  return useQuery<VideosResponse>(`videos-${subreddit}`, async () =>
+    fetch(
+      `${BASE_URL}${subreddit ? `/r/${subreddit}` : ''}/broadcasts`,
+    ).then((res) => res.json()),
   );
 }
