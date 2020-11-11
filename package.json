@@ -11,11 +11,13 @@
   },
   "dependencies": {
     "@types/react-native-video": "^5.0.3",
+    "ky": "^0.24.0",
     "react": "16.13.1",
     "react-native": "0.63.3",
     "react-native-easy-router": "^3.1.1",
     "react-native-paper": "^4.3.1",
-    "react-native-video": "^5.1.0-alpha8"
+    "react-native-video": "^5.1.0-alpha8",
+    "react-query": "^2.26.2"
   },
   "devDependencies": {
     "@babel/core": "^7.8.4",
