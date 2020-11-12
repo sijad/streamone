@@ -13,6 +13,7 @@ import {humanNumber} from '../../../utils';
 import {Icon} from '../../../components/Icon';
 
 interface VideoItemProps {
+  onPress: () => void;
   video: Video;
 }
 
@@ -22,9 +23,10 @@ export function VideoItem({
     post: {title},
     stream: {thumbnail},
   },
+  onPress,
 }: VideoItemProps) {
   return (
-    <TouchableOpacity onPress={() => {}}>
+    <TouchableOpacity onPress={onPress}>
       <ImageBackground style={styles.image} source={{uri: thumbnail}}>
         <View style={styles.header}>
           <View style={styles.views}>

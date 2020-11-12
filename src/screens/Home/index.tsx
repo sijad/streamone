@@ -1,15 +1,14 @@
 import React from 'react';
-import {
-  SafeAreaView,
-  StyleSheet,
-  FlatList,
-  ListRenderItemInfo,
-} from 'react-native';
+import {SafeAreaView, StyleSheet, FlatList} from 'react-native';
 import {useVideos} from '../../api';
 import {VideoItem} from './components/VideoItem';
-import type {Video} from '../../api/rpan/types';
+import {EasyRouterNavigator} from 'react-native-easy-router';
 
-export function Home() {
+interface HomeProps {
+  navigator: EasyRouterNavigator;
+}
+
+export function Home({navigator}: HomeProps) {
   const {data, isLoading, refetch} = useVideos();
 
   // TODO handle error
@@ -19,17 +18,21 @@ export function Home() {
       <FlatList
         numColumns={2}
         onRefresh={refetch}
-        renderItem={renderItem}
+        keyExtractor={(item) => item.post.id}
+        renderItem={({item}) => (
+          <VideoItem
+            onPress={() => {
+              navigator.push('Video', {video: item});
+            }}
+            video={item}
+          />
+        )}
         refreshing={isLoading}
         columnWrapperStyle={styles.listContainer}
         data={data?.data || []}
       />
     </SafeAreaView>
   );
-}
-
-function renderItem({item}: ListRenderItemInfo<Video>) {
-  return <VideoItem video={item} />;
 }
 
 const styles = StyleSheet.create({
