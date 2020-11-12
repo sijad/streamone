@@ -19,7 +19,7 @@ interface VideoItemProps {
 
 export function VideoItem({
   video: {
-    unique_watchers: uniqueWatchers,
+    continuous_watchers,
     post: {title},
     stream: {thumbnail},
   },
@@ -31,7 +31,9 @@ export function VideoItem({
         <View style={styles.header}>
           <View style={styles.views}>
             <Icon name="Eye" width={14} height={14} />
-            <Text style={styles.viewsText}>{humanNumber(uniqueWatchers)}</Text>
+            <Text style={styles.viewsText}>
+              {humanNumber(continuous_watchers)}
+            </Text>
           </View>
         </View>
         <LinearGradient colors={footerColors} style={styles.footer}>
