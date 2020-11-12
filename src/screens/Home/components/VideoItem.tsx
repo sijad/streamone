@@ -9,6 +9,7 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import type {Video} from '../../../api/rpan/types';
+import {humanNumber} from '../../../utils';
 
 interface VideoItemProps {
   video: Video;
@@ -26,7 +27,7 @@ export function VideoItem({
       <ImageBackground style={styles.image} source={{uri: thumbnail}}>
         <View style={styles.header}>
           <View style={styles.views}>
-            <Text style={styles.text}>{uniqueWatchers}</Text>
+            <Text style={styles.viewsText}>{humanNumber(uniqueWatchers)}</Text>
           </View>
         </View>
         <LinearGradient colors={footerColors} style={styles.footer}>
@@ -69,5 +70,9 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     borderRadius: 8,
     backgroundColor: 'rgba(0,0,0,0.4)',
+  },
+  viewsText: {
+    color: '#fff',
+    fontSize: 10,
   },
 });
