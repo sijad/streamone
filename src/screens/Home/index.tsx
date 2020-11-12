@@ -1,5 +1,5 @@
 import React from 'react';
-import {SafeAreaView, StyleSheet, FlatList} from 'react-native';
+import {SafeAreaView, StyleSheet, FlatList, StatusBar} from 'react-native';
 import {useVideos} from '../../api';
 import {VideoItem} from './components/VideoItem';
 import {EasyRouterNavigator} from 'react-native-easy-router';
@@ -28,7 +28,8 @@ export function Home({navigator}: HomeProps) {
           />
         )}
         refreshing={isLoading}
-        columnWrapperStyle={styles.listContainer}
+        columnWrapperStyle={styles.columnWrapper}
+        contentContainerStyle={styles.listContainer}
         data={data?.data || []}
       />
     </SafeAreaView>
@@ -39,7 +40,10 @@ const styles = StyleSheet.create({
   screen: {
     flex: 1,
   },
-  listContainer: {
+  columnWrapper: {
     justifyContent: 'space-evenly',
+  },
+  listContainer: {
+    paddingTop: StatusBar.currentHeight,
   },
 });

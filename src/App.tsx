@@ -6,7 +6,11 @@ import * as screens from './screens';
 const App = () => {
   return (
     <>
-      <StatusBar barStyle="dark-content" backgroundColor="rgba(0,0,0,0)" />
+      <StatusBar
+        barStyle="dark-content"
+        translucent
+        backgroundColor="transparent"
+      />
       <Navigator screens={screens} initialStack="Home" />
     </>
   );
