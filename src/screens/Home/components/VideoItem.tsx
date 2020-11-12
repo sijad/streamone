@@ -30,7 +30,7 @@ export function VideoItem({
       <ImageBackground style={styles.image} source={{uri: thumbnail}}>
         <View style={styles.header}>
           <View style={styles.views}>
-            <Icon name="Eye" width={14} height={14} />
+            <Icon name="Eye" width={14} height={14} stroke="#fff" />
             <Text style={styles.viewsText}>
               {humanNumber(continuous_watchers)}
             </Text>
