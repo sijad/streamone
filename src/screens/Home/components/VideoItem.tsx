@@ -10,6 +10,7 @@ import {
 } from 'react-native';
 import type {Video} from '../../../api/rpan/types';
 import {humanNumber} from '../../../utils';
+import {Icon} from '../../../components/Icon';
 
 interface VideoItemProps {
   video: Video;
@@ -27,6 +28,7 @@ export function VideoItem({
       <ImageBackground style={styles.image} source={{uri: thumbnail}}>
         <View style={styles.header}>
           <View style={styles.views}>
+            <Icon name="Eye" width={14} height={14} />
             <Text style={styles.viewsText}>{humanNumber(uniqueWatchers)}</Text>
           </View>
         </View>
@@ -66,6 +68,8 @@ const styles = StyleSheet.create({
   },
   views: {
     alignSelf: 'flex-end',
+    flexDirection: 'row',
+    alignItems: 'center',
     paddingVertical: 6,
     paddingHorizontal: 10,
     borderRadius: 8,

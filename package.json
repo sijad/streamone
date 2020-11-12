@@ -16,6 +16,7 @@
     "react-native-easy-router": "^3.1.1",
     "react-native-linear-gradient": "^2.5.6",
     "react-native-paper": "^4.3.1",
+    "react-native-svg": "^12.1.0",
     "react-native-video": "^5.1.0-alpha8",
     "react-query": "^2.26.2"
   },
@@ -33,6 +34,7 @@
     "eslint": "^6.5.1",
     "jest": "^25.1.0",
     "metro-react-native-babel-preset": "^0.59.0",
+    "react-native-svg-transformer": "^0.14.3",
     "react-test-renderer": "16.13.1",
     "typescript": "^3.8.3"
   },
