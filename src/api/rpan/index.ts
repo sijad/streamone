@@ -10,6 +10,8 @@ export function useVideo(id: string) {
 }
 
 export function useVideos(subreddit: string | undefined = '') {
+  // TODO figure it out how broadcasts paginations works
+  // and use useInfiniteQuery instead
   return useQuery<VideosResponse>(`videos-${subreddit}`, async () =>
     fetch(
       `${BASE_URL}${subreddit ? `/r/${subreddit}` : ''}/broadcasts`,
