@@ -44,7 +44,7 @@ export function VideoItem({
   );
 }
 
-const footerColors = ['rgba(0,0,0,0)', 'rgba(0,0,0,0.6)'];
+const footerColors = ['transparent', 'rgba(0,0,0,0.6)'];
 const {width} = Dimensions.get('window');
 
 const styles = StyleSheet.create({
