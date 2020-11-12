@@ -1,8 +1,17 @@
 import React, {useState, useRef} from 'react';
-import {View, ActivityIndicator, StyleSheet} from 'react-native';
-import RNVideo from 'react-native-video';
-import type {Video as VideoType} from '../../api/rpan/types';
+import {
+  View,
+  ActivityIndicator,
+  StyleSheet,
+  SafeAreaView,
+  Dimensions,
+} from 'react-native';
 import {EasyRouterNavigator} from 'react-native-easy-router';
+import LinearGradient from 'react-native-linear-gradient';
+import RNVideo from 'react-native-video';
+import {ChatBox} from './components/ChatBox';
+
+import type {Video as VideoType} from '../../api/rpan/types';
 
 interface VideoProps {
   video: VideoType;
@@ -11,6 +20,7 @@ interface VideoProps {
 
 export function Video({
   video: {
+    post: {id},
     broadcast_time,
     stream: {hls_url, thumbnail},
   },
@@ -36,10 +46,20 @@ export function Video({
         <View style={styles.loading}>
           <ActivityIndicator color="#fff" size="large" />
         </View>
-      ) : null}
+      ) : (
+        <SafeAreaView style={styles.uiWrapper}>
+          <LinearGradient style={styles.ui} colors={bgColors}>
+            <View style={styles.screen} />
+            <ChatBox id={id} />
+          </LinearGradient>
+        </SafeAreaView>
+      )}
     </View>
   );
 }
+
+const bgColors = ['transparent', 'rgba(0,0,0,0.6)'];
+const {height} = Dimensions.get('window');
 
 const styles = StyleSheet.create({
   screen: {
@@ -47,11 +67,20 @@ const styles = StyleSheet.create({
   },
   video: {
     flex: 1,
+    height,
+    ...StyleSheet.absoluteFillObject,
   },
   loading: {
     backgroundColor: 'rgba(0,0,0,0.6)',
     justifyContent: 'center',
     alignItems: 'center',
     ...StyleSheet.absoluteFillObject,
+  },
+  ui: {
+    flex: 1,
+    padding: 10,
+  },
+  uiWrapper: {
+    flex: 1,
   },
 });
