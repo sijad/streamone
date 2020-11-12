@@ -9,7 +9,7 @@ interface HomeProps {
 }
 
 export function Home({navigator}: HomeProps) {
-  const {data, isLoading, refetch} = useVideos();
+  const {data, isLoading, refetch, isFetching} = useVideos();
 
   // TODO handle error
 
@@ -27,7 +27,7 @@ export function Home({navigator}: HomeProps) {
             video={item}
           />
         )}
-        refreshing={isLoading}
+        refreshing={isLoading || isFetching}
         columnWrapperStyle={styles.columnWrapper}
         contentContainerStyle={styles.listContainer}
         data={data?.data || []}
