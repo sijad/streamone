@@ -47,5 +47,23 @@ export interface VideoPostAuthorInfo {
   name: string;
 }
 
+export interface ApiData<T> {
+  kind: string;
+  data: T;
+}
+
+export interface Comment {
+  id: string;
+  body: string;
+  stickied: boolean;
+  author: string;
+  author_fullname: string;
+  // associated_award: Award;
+}
+
 export type VideoResponse = DataResponse<Video>;
-export type VideosResponse = DataResponse<Video[]> & {next_cursor: string};
+export type VideosResponse = DataResponse<Video[]>;
+export type CommentsResponse = [
+  ApiData<Video>,
+  ApiData<{children: ApiData<Comment>[]}>,
+];
