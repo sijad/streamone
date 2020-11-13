@@ -13,6 +13,9 @@ export function Home({navigator}: HomeProps) {
 
   // TODO handle error
 
+  const dataRes = data?.data;
+  const items = dataRes && Array.isArray(dataRes) ? dataRes : [];
+
   return (
     <SafeAreaView style={styles.screen}>
       <FlatList
@@ -30,7 +33,7 @@ export function Home({navigator}: HomeProps) {
         refreshing={isLoading || isFetching}
         columnWrapperStyle={styles.columnWrapper}
         contentContainerStyle={styles.listContainer}
-        data={data?.data || []}
+        data={items}
       />
     </SafeAreaView>
   );

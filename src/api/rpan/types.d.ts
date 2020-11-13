@@ -1,6 +1,6 @@
 export type DataResponse<T> =
   | {status: 'success'; data: T}
-  | {status: string; data: undefined};
+  | {status: string; data: string};
 
 export interface Video {
   upvotes: number;
