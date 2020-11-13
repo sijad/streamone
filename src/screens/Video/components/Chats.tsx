@@ -1,5 +1,6 @@
 import React, {useMemo} from 'react';
-import {FlatList, Text, StyleSheet} from 'react-native';
+import {FlatList, StyleSheet} from 'react-native';
+import {ChatMessage} from './ChatMessage';
 import {useComments} from '../../../api';
 
 interface ChatBoxProps {
@@ -21,7 +22,7 @@ export function Chats({id}: ChatBoxProps) {
       style={styles.list}
       inverted
       keyExtractor={(item) => item.data.id}
-      renderItem={({item}) => <Text>{item.data.body}</Text>}
+      renderItem={({item}) => <ChatMessage comment={item.data} />}
     />
   );
 }
