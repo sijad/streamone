@@ -61,8 +61,15 @@ export interface Comment {
   // associated_award: Award;
 }
 
+export interface CommentWebSocketPayload {
+  type: 'new_comment' | 'remove_comment';
+  payload: Comment;
+}
+
 export type VideoResponse = DataResponse<Video>;
+
 export type VideosResponse = DataResponse<Video[]>;
+
 export type CommentsResponse = [
   ApiData<Video>,
   ApiData<{children: ApiData<Comment>[]}>,

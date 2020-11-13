@@ -29,9 +29,6 @@ export function useVideos(subreddit: string | undefined = undefined) {
 }
 
 export function useComments(id: string, sort: 'new' | 'old' = 'new') {
-  if (id.startsWith('t3_')) {
-    id = id.substr(3);
-  }
   return useQuery<CommentsResponse>(['comments', id, sort], async () =>
     getJSON(`${API_BASE_URL}/comments/${id}?sort=${sort}`),
   );

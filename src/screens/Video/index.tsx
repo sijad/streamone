@@ -20,7 +20,7 @@ interface VideoProps {
 
 export function Video({
   video: {
-    post: {id},
+    post: {id, liveCommentsWebsocket},
     broadcast_time,
     stream: {hls_url, thumbnail},
   },
@@ -50,7 +50,7 @@ export function Video({
         <SafeAreaView style={styles.uiWrapper}>
           <LinearGradient style={styles.ui} colors={bgColors}>
             <View style={styles.screen} />
-            <ChatBox id={id} />
+            <ChatBox id={id} websocketUrl={liveCommentsWebsocket} />
           </LinearGradient>
         </SafeAreaView>
       )}
