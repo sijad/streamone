@@ -33,3 +33,10 @@ export function useComments(id: string, sort: 'new' | 'old' = 'new') {
     getJSON(`${API_BASE_URL}/comments/${id}?sort=${sort}`),
   );
 }
+
+export function getComments(
+  id: string,
+  sort: 'new' | 'old' = 'new',
+): Promise<CommentsResponse> {
+  return getJSON(`${API_BASE_URL}/comments/${id}?sort=${sort}`);
+}
