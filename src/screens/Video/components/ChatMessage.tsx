@@ -8,7 +8,7 @@ interface ChatMessageProps {
 }
 
 function _ChatMessage({comment: {body}}: ChatMessageProps) {
-  return <Markdown style={markdownStyles}>{body}</Markdown>;
+  return <Markdown style={markdownStyles}>{body || ''}</Markdown>;
 }
 
 export const ChatMessage = memo(_ChatMessage);
