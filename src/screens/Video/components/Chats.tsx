@@ -89,6 +89,7 @@ const styles = StyleSheet.create({
   },
   list: {
     flex: 1,
+    paddingHorizontal: 10,
   },
   unreadButton: {
     position: 'absolute',
