@@ -22,7 +22,11 @@ export function Chats({id, websocketUrl}: ChatsProps) {
     const _id = id.startsWith('t3_') ? id.substr(3) : id;
     getComments(_id)
       .then((data) => {
-        setComments(data[1].data.children.map((d) => d.data));
+        setComments(
+          data[1].data.children
+            .filter((d) => !!d.data?.body)
+            .map((d) => d.data),
+        );
       })
       .catch(() => {
         // TODO handle error

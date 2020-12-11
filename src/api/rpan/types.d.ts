@@ -58,6 +58,8 @@ export interface Comment {
   stickied: boolean;
   author: string;
   author_fullname: string;
+  created_utc?: number;
+  full_date?: string;
   // associated_award: Award;
 }
 
