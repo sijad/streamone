@@ -5,6 +5,7 @@ import {
   StyleSheet,
   SafeAreaView,
   Dimensions,
+  TouchableHighlight,
 } from 'react-native';
 import {EasyRouterNavigator} from 'react-native-easy-router';
 import LinearGradient from 'react-native-linear-gradient';
@@ -48,8 +49,7 @@ export function Video({
         </View>
       ) : (
         <SafeAreaView style={styles.uiWrapper}>
-          <LinearGradient style={styles.ui} colors={bgColors}>
-            <View style={styles.screen} />
+          <LinearGradient style={styles.footer} colors={bgColors}>
             <ChatBox id={id} websocketUrl={liveCommentsWebsocket} />
           </LinearGradient>
         </SafeAreaView>
@@ -76,8 +76,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     ...StyleSheet.absoluteFillObject,
   },
-  ui: {
+  footer: {
     flex: 1,
+    justifyContent: 'flex-end',
+    alignItems: 'flex-end',
     padding: 10,
   },
   uiWrapper: {
